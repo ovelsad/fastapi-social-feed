@@ -1,9 +1,15 @@
+import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# объявляем строку для подлючения к базе данных, по сути создали переменную
-SQLALCHEMY_DATABASE_URL = "postgresql://robot-startml-ro:pheiph0hahj1Vaif@postgres.lab.karpov.courses:6432/startml"
+# строка подключения к базе данных берется из переменной окружения DATABASE_URL,
+# чтобы не хранить учетные данные в коде
+SQLALCHEMY_DATABASE_URL = os.environ.get(
+    "DATABASE_URL",
+    "postgresql://user:password@localhost:5432/startml",
+)
 
 # создаем engine (прослойку sqlalchemy, которая уничтожает различия между базами данных)
 engine = create_engine(SQLALCHEMY_DATABASE_URL)

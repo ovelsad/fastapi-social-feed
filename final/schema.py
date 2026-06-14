@@ -12,7 +12,7 @@ class UserGet(BaseModel):
     source: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 
@@ -23,7 +23,7 @@ class PostGet(BaseModel):
     like_count: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class FeedGet(BaseModel):
@@ -35,7 +35,7 @@ class FeedGet(BaseModel):
     action: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 
